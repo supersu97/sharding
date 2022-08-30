@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.su.sharding.dao.PatientsMapper">
+  <resultMap id="BaseResultMap" type="com.su.sharding.entry.Patients">
+    <!--@mbg.generated-->
+    <!--@Table t_uc_patients-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="his_id" jdbcType="BIGINT" property="hisId" />
+    <result column="his_name" jdbcType="VARCHAR" property="hisName" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="channel_type" jdbcType="VARCHAR" property="channelType" />
+    <result column="patient_type" jdbcType="INTEGER" property="patientType" />
+    <result column="relation_type" jdbcType="INTEGER" property="relationType" />
+    <result column="id_type" jdbcType="INTEGER" property="idType" />
+    <result column="id_no" jdbcType="VARCHAR" property="idNo" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="bind_status" jdbcType="INTEGER" property="bindStatus" />
+    <result column="parent_name" jdbcType="VARCHAR" property="parentName" />
+    <result column="parent_id_type" jdbcType="INTEGER" property="parentIdType" />
+    <result column="parent_id_no" jdbcType="VARCHAR" property="parentIdNo" />
+    <result column="pat_card_type" jdbcType="INTEGER" property="patCardType" />
+    <result column="pat_card_no" jdbcType="VARCHAR" property="patCardNo" />
+    <result column="consume_type" jdbcType="VARCHAR" property="consumeType" />
+    <result column="is_defalut" jdbcType="INTEGER" property="isDefalut" />
+    <result column="is_self" jdbcType="INTEGER" property="isSelf" />
+    <result column="sync_status" jdbcType="INTEGER" property="syncStatus" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="id_image" jdbcType="VARCHAR" property="idImage" />
+    <result column="pat_in_no" jdbcType="VARCHAR" property="patInNo" />
+    <result column="bind_medicare_card" jdbcType="INTEGER" property="bindMedicareCard" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="married" jdbcType="INTEGER" property="married" />
+    <result column="smoking" jdbcType="INTEGER" property="smoking" />
+    <result column="pat_his_no" jdbcType="VARCHAR" property="patHisNo" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="account_id" jdbcType="BIGINT" property="accountId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, his_id, his_name, user_id, channel_type, patient_type, relation_type,
+    id_type, id_no , sex, birthday, mobile, address,
+    bind_status, parent_name, parent_id_type, parent_id_no,
+    pat_card_type, pat_card_no, consume_type, is_defalut, is_self, sync_status, `type`, 
+    id_image, pat_in_no, bind_medicare_card, height, weight, married, smoking, pat_his_no, 
+    create_time, update_time, account_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_uc_patients
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_uc_patients
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.su.sharding.entry.Patients">
+    <!--@mbg.generated-->
+    insert into t_uc_patients (id, `name`,
+      his_id, his_name, user_id, 
+      channel_type, patient_type, relation_type, 
+      id_type, id_no,
+      sex, birthday, mobile, 
+       address,
+      bind_status, parent_name,
+      parent_id_type, parent_id_no,
+      pat_card_type, pat_card_no, consume_type, 
+      is_defalut, is_self, sync_status, 
+      `type`, id_image, pat_in_no, 
+      bind_medicare_card, height, weight, 
+      married, smoking, pat_his_no, 
+      create_time, update_time, account_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
+      #{hisId,jdbcType=BIGINT}, #{hisName,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, 
+      #{channelType,jdbcType=VARCHAR}, #{patientType,jdbcType=INTEGER}, #{relationType,jdbcType=INTEGER}, 
+      #{idType,jdbcType=INTEGER}, #{idNo,jdbcType=VARCHAR},
+      #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{mobile,jdbcType=VARCHAR}, 
+       #{address,jdbcType=VARCHAR},
+      #{bindStatus,jdbcType=INTEGER}, #{parentName,jdbcType=VARCHAR},
+      #{parentIdType,jdbcType=INTEGER}, #{parentIdNo,jdbcType=VARCHAR},
+      #{patCardType,jdbcType=INTEGER}, #{patCardNo,jdbcType=VARCHAR}, #{consumeType,jdbcType=VARCHAR}, 
+      #{isDefalut,jdbcType=INTEGER}, #{isSelf,jdbcType=INTEGER}, #{syncStatus,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{idImage,jdbcType=VARCHAR}, #{patInNo,jdbcType=VARCHAR}, 
+      #{bindMedicareCard,jdbcType=INTEGER}, #{height,jdbcType=INTEGER}, #{weight,jdbcType=INTEGER}, 
+      #{married,jdbcType=INTEGER}, #{smoking,jdbcType=INTEGER}, #{patHisNo,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{accountId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.su.sharding.entry.Patients">
+    <!--@mbg.generated-->
+    insert into t_uc_patients
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="hisId != null">
+        his_id,
+      </if>
+      <if test="hisName != null">
+        his_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="channelType != null">
+        channel_type,
+      </if>
+      <if test="patientType != null">
+        patient_type,
+      </if>
+      <if test="relationType != null">
+        relation_type,
+      </if>
+      <if test="idType != null">
+        id_type,
+      </if>
+      <if test="idNo != null">
+        id_no,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="bindStatus != null">
+        bind_status,
+      </if>
+      <if test="parentName != null">
+        parent_name,
+      </if>
+      <if test="parentIdType != null">
+        parent_id_type,
+      </if>
+      <if test="parentIdNo != null">
+        parent_id_no,
+      </if>
+      <if test="patCardType != null">
+        pat_card_type,
+      </if>
+      <if test="patCardNo != null">
+        pat_card_no,
+      </if>
+      <if test="consumeType != null">
+        consume_type,
+      </if>
+      <if test="isDefalut != null">
+        is_defalut,
+      </if>
+      <if test="isSelf != null">
+        is_self,
+      </if>
+      <if test="syncStatus != null">
+        sync_status,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="idImage != null">
+        id_image,
+      </if>
+      <if test="patInNo != null">
+        pat_in_no,
+      </if>
+      <if test="bindMedicareCard != null">
+        bind_medicare_card,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="married != null">
+        married,
+      </if>
+      <if test="smoking != null">
+        smoking,
+      </if>
+      <if test="patHisNo != null">
+        pat_his_no,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hisId != null">
+        #{hisId,jdbcType=BIGINT},
+      </if>
+      <if test="hisName != null">
+        #{hisName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="channelType != null">
+        #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="patientType != null">
+        #{patientType,jdbcType=INTEGER},
+      </if>
+      <if test="relationType != null">
+        #{relationType,jdbcType=INTEGER},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=INTEGER},
+      </if>
+      <if test="idNo != null">
+        #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bindStatus != null">
+        #{bindStatus,jdbcType=INTEGER},
+      </if>
+      <if test="parentName != null">
+        #{parentName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentIdType != null">
+        #{parentIdType,jdbcType=INTEGER},
+      </if>
+      <if test="parentIdNo != null">
+        #{parentIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patCardType != null">
+        #{patCardType,jdbcType=INTEGER},
+      </if>
+      <if test="patCardNo != null">
+        #{patCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeType != null">
+        #{consumeType,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefalut != null">
+        #{isDefalut,jdbcType=INTEGER},
+      </if>
+      <if test="isSelf != null">
+        #{isSelf,jdbcType=INTEGER},
+      </if>
+      <if test="syncStatus != null">
+        #{syncStatus,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="idImage != null">
+        #{idImage,jdbcType=VARCHAR},
+      </if>
+      <if test="patInNo != null">
+        #{patInNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bindMedicareCard != null">
+        #{bindMedicareCard,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="married != null">
+        #{married,jdbcType=INTEGER},
+      </if>
+      <if test="smoking != null">
+        #{smoking,jdbcType=INTEGER},
+      </if>
+      <if test="patHisNo != null">
+        #{patHisNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.su.sharding.entry.Patients">
+    <!--@mbg.generated-->
+    update t_uc_patients
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hisId != null">
+        his_id = #{hisId,jdbcType=BIGINT},
+      </if>
+      <if test="hisName != null">
+        his_name = #{hisName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="channelType != null">
+        channel_type = #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="patientType != null">
+        patient_type = #{patientType,jdbcType=INTEGER},
+      </if>
+      <if test="relationType != null">
+        relation_type = #{relationType,jdbcType=INTEGER},
+      </if>
+      <if test="idType != null">
+        id_type = #{idType,jdbcType=INTEGER},
+      </if>
+      <if test="idNo != null">
+        id_no = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bindStatus != null">
+        bind_status = #{bindStatus,jdbcType=INTEGER},
+      </if>
+      <if test="parentName != null">
+        parent_name = #{parentName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentIdType != null">
+        parent_id_type = #{parentIdType,jdbcType=INTEGER},
+      </if>
+      <if test="parentIdNo != null">
+        parent_id_no = #{parentIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patCardType != null">
+        pat_card_type = #{patCardType,jdbcType=INTEGER},
+      </if>
+      <if test="patCardNo != null">
+        pat_card_no = #{patCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeType != null">
+        consume_type = #{consumeType,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefalut != null">
+        is_defalut = #{isDefalut,jdbcType=INTEGER},
+      </if>
+      <if test="isSelf != null">
+        is_self = #{isSelf,jdbcType=INTEGER},
+      </if>
+      <if test="syncStatus != null">
+        sync_status = #{syncStatus,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="idImage != null">
+        id_image = #{idImage,jdbcType=VARCHAR},
+      </if>
+      <if test="patInNo != null">
+        pat_in_no = #{patInNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bindMedicareCard != null">
+        bind_medicare_card = #{bindMedicareCard,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="married != null">
+        married = #{married,jdbcType=INTEGER},
+      </if>
+      <if test="smoking != null">
+        smoking = #{smoking,jdbcType=INTEGER},
+      </if>
+      <if test="patHisNo != null">
+        pat_his_no = #{patHisNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.su.sharding.entry.Patients">
+    <!--@mbg.generated-->
+    update t_uc_patients
+    set `name` = #{name,jdbcType=VARCHAR},
+      his_id = #{hisId,jdbcType=BIGINT},
+      his_name = #{hisName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      channel_type = #{channelType,jdbcType=VARCHAR},
+      patient_type = #{patientType,jdbcType=INTEGER},
+      relation_type = #{relationType,jdbcType=INTEGER},
+      id_type = #{idType,jdbcType=INTEGER},
+      id_no = #{idNo,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      bind_status = #{bindStatus,jdbcType=INTEGER},
+      parent_name = #{parentName,jdbcType=VARCHAR},
+      parent_id_type = #{parentIdType,jdbcType=INTEGER},
+      parent_id_no = #{parentIdNo,jdbcType=VARCHAR},
+      pat_card_type = #{patCardType,jdbcType=INTEGER},
+      pat_card_no = #{patCardNo,jdbcType=VARCHAR},
+      consume_type = #{consumeType,jdbcType=VARCHAR},
+      is_defalut = #{isDefalut,jdbcType=INTEGER},
+      is_self = #{isSelf,jdbcType=INTEGER},
+      sync_status = #{syncStatus,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=INTEGER},
+      id_image = #{idImage,jdbcType=VARCHAR},
+      pat_in_no = #{patInNo,jdbcType=VARCHAR},
+      bind_medicare_card = #{bindMedicareCard,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      married = #{married,jdbcType=INTEGER},
+      smoking = #{smoking,jdbcType=INTEGER},
+      pat_his_no = #{patHisNo,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      account_id = #{accountId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_uc_patients
+    <where>
+      <if test="idNo != null and idNo != ''">
+        and id_no = #{idNo,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null and name != ''">
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <update id="updateCipherByPrimaryKey">
+    update t_uc_patients
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCipher != null and nameCipher != ''">
+        name_cipher = #{nameCipher,jdbcType=VARCHAR},
+      </if>
+      <if test="hisId != null">
+        his_id = #{hisId,jdbcType=BIGINT},
+      </if>
+      <if test="hisName != null">
+        his_name = #{hisName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="channelType != null">
+        channel_type = #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="patientType != null">
+        patient_type = #{patientType,jdbcType=INTEGER},
+      </if>
+      <if test="relationType != null">
+        relation_type = #{relationType,jdbcType=INTEGER},
+      </if>
+      <if test="idType != null">
+        id_type = #{idType,jdbcType=INTEGER},
+      </if>
+      <if test="idNo != null">
+        id_no = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idNoCipher != null and idNoCipher != ''">
+        id_no_cipher = #{idNoCipher,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileCipher != null and mobileCipher != ''">
+        mobile_cipher = #{mobileCipher,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bindStatus != null">
+        bind_status = #{bindStatus,jdbcType=INTEGER},
+      </if>
+      <if test="parentName != null">
+        parent_name = #{parentName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentIdType != null">
+        parent_id_type = #{parentIdType,jdbcType=INTEGER},
+      </if>
+      <if test="parentIdNo != null">
+        parent_id_no = #{parentIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="patCardType != null">
+        pat_card_type = #{patCardType,jdbcType=INTEGER},
+      </if>
+      <if test="patCardNo != null">
+        pat_card_no = #{patCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeType != null">
+        consume_type = #{consumeType,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefalut != null">
+        is_defalut = #{isDefalut,jdbcType=INTEGER},
+      </if>
+      <if test="isSelf != null">
+        is_self = #{isSelf,jdbcType=INTEGER},
+      </if>
+      <if test="syncStatus != null">
+        sync_status = #{syncStatus,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="idImage != null">
+        id_image = #{idImage,jdbcType=VARCHAR},
+      </if>
+      <if test="patInNo != null">
+        pat_in_no = #{patInNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bindMedicareCard != null">
+        bind_medicare_card = #{bindMedicareCard,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="married != null">
+        married = #{married,jdbcType=INTEGER},
+      </if>
+      <if test="smoking != null">
+        smoking = #{smoking,jdbcType=INTEGER},
+      </if>
+      <if test="patHisNo != null">
+        pat_his_no = #{patHisNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
