@@ -1,2 +1,4 @@
 com.su.sharding.customize.encrypt.Sha256Encryptor
 com.su.sharding.customize.encrypt.Sha256RandomEncryptor
+com.su.sharding.customize.encrypt.PlaintextEncryptor
+com.su.sharding.customize.encrypt.PlaintextRandomEncryptor

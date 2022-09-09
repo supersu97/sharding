@@ -1,6 +1,6 @@
 package com.su.sharding.service;
 
-import com.su.sharding.dao.PatientsMapper;
+import com.su.sharding.dao.Patients2Mapper;
 import com.su.sharding.entry.Patients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PatientServiceImpl implements PatientService{
+public class Patient2ServiceImpl implements PatientService{
     @Autowired
-    PatientsMapper patientsMapper;
+    Patients2Mapper patientsMapper;
 
 
     @Override

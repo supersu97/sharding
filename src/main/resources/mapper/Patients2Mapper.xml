@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.su.sharding.dao.PatientsMapper">
+<mapper namespace="com.su.sharding.dao.Patients2Mapper">
   <resultMap id="BaseResultMap" type="com.su.sharding.entry.Patients">
     <!--@mbg.generated-->
-    <!--@Table t_uc_patients-->
+    <!--@Table t_uc_patients2-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="his_id" jdbcType="BIGINT" property="hisId" />
@@ -59,12 +59,12 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
-    delete from t_uc_patients
+    delete from t_uc_patients2
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.su.sharding.entry.Patients">
     <!--@mbg.generated-->
-    insert into t_uc_patients (id, `name`,
+    insert into t_uc_patients2 (id, `name`,
       his_id, his_name, user_id, 
       channel_type, patient_type, relation_type, 
       id_type, id_no,
@@ -97,7 +97,7 @@
   </insert>
 
   <insert id="batchInsert" parameterType="com.su.sharding.entry.Patients">
-    insert into t_uc_patients (id, `name`,
+    insert into t_uc_patients2 (id, `name`,
                                his_id, his_name, user_id,
                                channel_type, patient_type, relation_type,
                                id_type, id_no,
@@ -109,7 +109,7 @@
                                is_defalut, is_self, sync_status,
                                `type`, id_image, pat_in_no,
                                bind_medicare_card, height, weight,
-                               married, smoking, pat_his_no,account_id
+                               married, smoking, pat_his_no, account_id
     )
     values
     <foreach collection="list" item="item" separator=",">
@@ -125,14 +125,13 @@
       #{item.isDefalut,jdbcType=INTEGER}, #{item.isSelf,jdbcType=INTEGER}, #{item.syncStatus,jdbcType=INTEGER},
       #{item.type,jdbcType=INTEGER}, #{item.idImage,jdbcType=VARCHAR}, #{item.patInNo,jdbcType=VARCHAR},
       #{item.bindMedicareCard,jdbcType=INTEGER}, #{item.height,jdbcType=INTEGER}, #{item.weight,jdbcType=INTEGER},
-      #{item.married,jdbcType=INTEGER}, #{item.smoking,jdbcType=INTEGER}, #{item.patHisNo,jdbcType=VARCHAR},
-      #{item.accountId,jdbcType=BIGINT}
+      #{item.married,jdbcType=INTEGER}, #{item.smoking,jdbcType=INTEGER}, #{item.patHisNo,jdbcType=VARCHAR}, #{item.accountId,jdbcType=BIGINT}
       )
     </foreach>
   </insert>
   <insert id="insertSelective" parameterType="com.su.sharding.entry.Patients">
     <!--@mbg.generated-->
-    insert into t_uc_patients
+    insert into t_uc_patients2
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -356,7 +355,7 @@
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.su.sharding.entry.Patients">
     <!--@mbg.generated-->
-    update t_uc_patients
+    update t_uc_patients2
     <set>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
@@ -468,7 +467,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.su.sharding.entry.Patients">
     <!--@mbg.generated-->
-    update t_uc_patients
+    update t_uc_patients2
     set `name` = #{name,jdbcType=VARCHAR},
       his_id = #{hisId,jdbcType=BIGINT},
       his_name = #{hisName,jdbcType=VARCHAR},
@@ -510,7 +509,7 @@
   <select id="selectByKey" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
-    from t_uc_patients
+    from t_uc_patients2
     <where>
       <if test="idNo != null and idNo != ''">
         and id_no = #{idNo,jdbcType=VARCHAR}
@@ -525,7 +524,7 @@
   </select>
 
   <update id="updateCipherByPrimaryKey">
-    update t_uc_patients
+    update t_uc_patients2
     <set>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},

@@ -2,9 +2,9 @@ package com.su.sharding.customize.encrypt;
 
 import cn.hutool.crypto.digest.HMac;
 import cn.hutool.crypto.digest.HmacAlgorithm;
+import com.gzhc365.web.util.PlainTextEncryptUtil;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shardingsphere.encrypt.strategy.spi.QueryAssistedEncryptor;
 
 import java.time.LocalDateTime;
@@ -12,26 +12,21 @@ import java.util.Properties;
 
 @Getter
 @Setter
-public final class Sha256RandomEncryptor implements QueryAssistedEncryptor {
-    
+public class PlaintextRandomEncryptor implements QueryAssistedEncryptor {
+
     private Properties properties = new Properties();
-    
     @Override
-    public String queryAssistedEncrypt(final String plaintext) {
-        if (null == plaintext) {
-            return null;
-        }
-        // 原始字符串
-        return DigestUtils.sha256Hex(plaintext);
+    public String queryAssistedEncrypt(String plaintext) {
+        return PlainTextEncryptUtil.encrypt(plaintext,"A8duw%ok_Lo24!2f");
     }
-    
+
     @Override
     public void init() {
-    
+
     }
-    
+
     @Override
-    public String encrypt(final Object plaintext) {
+    public String encrypt(Object plaintext) {
         if (null == plaintext) {
             return null;
         }
@@ -40,15 +35,22 @@ public final class Sha256RandomEncryptor implements QueryAssistedEncryptor {
         HMac hMac = new HMac(HmacAlgorithm.HmacSHA256, bytes);
         return hMac.digestHex(String.valueOf(plaintext));
     }
-    
+
     @Override
-    public Object decrypt(final String ciphertext) {
+    public Object decrypt(String ciphertext) {
         return ciphertext;
     }
-    
+
     @Override
     public String getType() {
-        return "SHA256_RANDOM";
+        return "hcRandom";
     }
-    
+
+    @Override
+    public void setProperties(Properties properties) {
+        if (properties == null) {
+            return;
+        }
+        this.properties = properties;
+    }
 }

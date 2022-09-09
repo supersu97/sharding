@@ -10,7 +10,7 @@ import java.util.List;
  * @author subo
  */
 @Mapper
-public interface PatientsMapper {
+public interface Patients2Mapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(Patients record);
