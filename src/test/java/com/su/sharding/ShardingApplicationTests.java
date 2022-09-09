@@ -86,6 +86,7 @@ class ShardingApplicationTests {
     @DisplayName("查询所有")
     void selectAll() {
         System.out.println(JSONObject.toJSONString(patient2Service.selectAll()));
+        System.out.println(JSONObject.toJSONString(patient2Service.selectAll()));
     }
 
     @Test
